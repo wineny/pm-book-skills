@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>기회 나무</title>
+<!--
+  기회 나무 한 장 그림 틀. 바꾸는 곳은 바로 아래 ost-data 블록의 JSON 하나뿐이다.
+  칸 설명:
+    source  = "heard"(인터뷰에서 들은 것) 또는 "mine"(내 생각). heard 면 count 에 말한 사람 수
+    picked  = 고른 어려움 하나에만 true
+    keep    = 그 어려움 아래 보관한 해결책 목록(없으면 빼도 됨)
+    solutions.now / later / drop = 지금 할 것 / 나중에 / 안 할 것 (비면 빈 배열)
+-->
+<script type="application/json" id="ost-data">
+{
+  "title": "12KM 기회 나무",
+  "date": "2026-11-11",
+  "outcome": "첫 참여 후 4주 안에 두 번 더 나오는 회원 늘리기",
+  "outcomeNote": "매주 토요일 오전 7시 · 12km",
+  "opportunities": [
+    {
+      "text": "처음 12km를 따라 뛰다가 지친다",
+      "source": "heard",
+      "count": 3,
+      "picked": true,
+      "note": "3명 중 2명이 다음 주에 안 나옴"
+    },
+    {
+      "text": "금요일 술약속 뒤 아침 7시에 못 일어난다",
+      "source": "heard",
+      "count": 2,
+      "note": "한 주 쉬고 돌아옴"
+    },
+    {
+      "text": "아는 사람이 없어 어색하다",
+      "source": "mine"
+    },
+    {
+      "text": "단체방 공지를 놓친다",
+      "source": "mine",
+      "keep": [
+        "앱 알림"
+      ]
+    }
+  ],
+  "solutions": {
+    "now": [
+      "5km 짧은 코스",
+      "페이스메이커",
+      "월 1회 입문의 날"
+    ],
+    "later": [
+      "걷뛰 허용",
+      "중간 반환점",
+      "4주 적응 과정",
+      "정기 휴식",
+      "따릉이 서포터"
+    ],
+    "drop": [
+      "끝나고 아침 먹기",
+      "출석 스탬프"
+    ]
+  },
+  "next": [
+    "「내 생각」 가지 2개를 다음 인터뷰에서 확인",
+    "지금 할 것 3개를 작은 실험으로 견주어 하나로 좁히기"
+  ]
+}
+</script>
+<style>
+  :root{
+    --o:#F2645C; --o-d:#D9483F; --o-bg:#FDE8E6; --o-tx:#C2453C;
+    --paper:#fff; --beige:#F6F4F1; --line:#E5E7EB; --ink:#1F2933; --mut:#6B7280; --canvas:#FFFCFA;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-font-smoothing:antialiased}
+  body{background:var(--canvas);color:var(--ink);font-family:"Pretendard","Apple SD Gothic Neo",-apple-system,"Malgun Gothic",sans-serif;line-height:1.5;font-size:18px;word-break:keep-all;overflow-wrap:anywhere}
+  main{max-width:1040px;margin:0 auto;padding:48px 20px 96px}
+  .kicker{display:inline-block;font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--o-tx);background:var(--o-bg);padding:6px 14px;border-radius:999px}
+  h1{font-size:36px;font-weight:800;line-height:1.25;margin:14px 0 6px}
+  .sub{color:var(--mut);font-size:16px;font-weight:600}
+
+  .layer{margin-top:44px}
+  .layer-name{font-size:14px;font-weight:800;letter-spacing:.08em;color:var(--mut);margin-bottom:10px}
+
+  .outcome{background:var(--ink);color:#fff;border-radius:20px;padding:24px 26px}
+  .outcome .t{font-size:28px;font-weight:800;line-height:1.3}
+  .outcome .d{font-size:15px;opacity:.75;margin-top:6px;font-weight:600}
+
+  .opps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px}
+  .opp{background:var(--paper);border:2px solid var(--line);border-radius:18px;padding:18px 18px 16px;position:relative}
+  .opp.mine{border-style:dashed;background:var(--beige)}
+  .opp .t{font-size:19px;font-weight:800;line-height:1.35;margin-top:10px}
+  .opp .n{font-size:14px;color:var(--mut);font-weight:600;margin-top:6px}
+  .opp .keep{font-size:13px;color:var(--mut);margin-top:8px}
+  .opp.picked{background:linear-gradient(160deg,var(--o),var(--o-d));border:0;color:#fff;box-shadow:0 12px 28px rgba(242,100,92,.3);transform:scale(1.03)}
+  .opp.picked .n,.opp.picked .keep{color:#fff;opacity:.9}
+  .chip{display:inline-block;font-size:13px;font-weight:800;padding:4px 11px;border-radius:999px;background:var(--o-bg);color:var(--o-tx)}
+  .chip.gray{background:#fff;color:var(--mut);border:1px solid var(--line)}
+  .opp.picked .chip{background:rgba(255,255,255,.22);color:#fff;border:0}
+  .star{position:absolute;top:-12px;right:14px;background:var(--ink);color:#fff;font-size:13px;font-weight:800;padding:4px 10px;border-radius:999px}
+
+  .down{display:flex;justify-content:center;margin:14px 0 0}
+  .down::after{content:"";border-left:13px solid transparent;border-right:13px solid transparent;border-top:18px solid var(--o)}
+
+  .sols{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px}
+  .col{border-radius:18px;padding:18px}
+  .col h3{font-size:17px;font-weight:800;margin-bottom:12px;display:flex;justify-content:space-between;align-items:baseline}
+  .col h3 small{font-size:14px;font-weight:700;opacity:.8}
+  .col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .col li{border-radius:12px;padding:10px 12px;font-weight:700;font-size:16px;line-height:1.35}
+  .col.now{background:var(--o-bg)} .col.now h3{color:var(--o-tx)}
+  .col.now li{background:linear-gradient(160deg,var(--o),var(--o-d));color:#fff;font-size:18px;padding:14px}
+  .col.later{background:var(--paper);border:2px solid var(--line)} .col.later li{background:var(--beige)}
+  .col.drop{background:var(--beige)} .col.drop h3{color:var(--mut)}
+  .col.drop li{color:var(--mut);text-decoration:line-through;background:#fff}
+
+  .next{margin-top:28px;background:var(--beige);border-radius:16px;padding:18px 22px}
+  .next b{color:var(--o-d)}
+  .next ol{margin:8px 0 0 22px;font-weight:700}
+  .legend{margin-top:18px;font-size:14px;color:var(--mut);font-weight:600;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+  @media (max-width:720px){
+    h1{font-size:28px} .outcome .t{font-size:22px}
+    .sols{grid-template-columns:1fr}
+    .opp.picked{transform:none}
+  }
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+(function(){
+  let OST;
+  try{ OST=JSON.parse(document.getElementById('ost-data').textContent); }
+  catch(err){
+    document.getElementById('app').innerHTML='<h1>그림을 못 그렸어요</h1><p class="sub">ost-data 블록의 JSON 이 깨졌어요: '+String(err.message).replace(/</g,'&lt;')+'</p>';
+    return;
+  }
+  const el=(tag,cls,text)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;};
+  const app=document.getElementById('app');
+  document.title=OST.title||'기회 나무';
+
+  app.append(el('span','kicker','기회 나무 · '+(OST.date||'')));
+  app.append(el('h1',null,OST.title||'기회 나무'));
+  app.append(el('p','sub','맨 위 변화 → 고객의 어려움 → 해결책 순서로 읽습니다'));
+
+  // 1. 맨 위 변화
+  const l1=el('section','layer'); l1.append(el('div','layer-name','1 · 맨 위 변화'));
+  const oc=el('div','outcome'); oc.append(el('div','t',OST.outcome||''));
+  if(OST.outcomeNote) oc.append(el('div','d',OST.outcomeNote));
+  l1.append(oc); app.append(l1);
+
+  // 2. 어려움
+  const l2=el('section','layer'); l2.append(el('div','layer-name','2 · 고객의 어려움'));
+  const grid=el('div','opps');
+  (OST.opportunities||[]).forEach(o=>{
+    const heard=o.source==='heard';
+    const c=el('div','opp'+(heard?'':' mine')+(o.picked?' picked':''));
+    if(o.picked) c.append(el('span','star','★ 고른 어려움'));
+    c.append(el('span','chip'+(heard?'':' gray'), heard?('들은 것'+(o.count?' · '+o.count+'명':'')):'내 생각'));
+    c.append(el('div','t',o.text));
+    if(o.note) c.append(el('div','n',o.note));
+    if(o.keep&&o.keep.length) c.append(el('div','keep','보관한 해결책: '+o.keep.join(', ')));
+    grid.append(c);
+  });
+  l2.append(grid); app.append(l2);
+
+  // 3. 해결책
+  const s=OST.solutions||{};
+  const total=['now','later','drop'].reduce((a,k)=>a+((s[k]||[]).length),0);
+  const picked=(OST.opportunities||[]).find(o=>o.picked);
+  app.append(el('div','down'));
+  const l3=el('section','layer'); l3.style.marginTop='14px';
+  l3.append(el('div','layer-name','3 · 해결책 '+total+'개'+(picked?' — 「'+picked.text+'」를 푸는 방법':'')));
+  const sols=el('div','sols');
+  [['now','지금 할 것'],['later','나중에'],['drop','안 할 것']].forEach(([k,name])=>{
+    const col=el('div','col '+k); const h=el('h3',null,name); h.append(el('small',null,(s[k]||[]).length+'개'));
+    col.append(h); const ul=el('ul'); (s[k]||[]).forEach(t=>ul.append(el('li',null,t))); col.append(ul); sols.append(col);
+  });
+  l3.append(sols); app.append(l3);
+
+  // 다음 할 일
+  if(OST.next&&OST.next.length){
+    const nx=el('div','next'); const b=el('b',null,'다음 할 일'); nx.append(b);
+    const ol=el('ol'); OST.next.forEach(t=>ol.append(el('li',null,t))); nx.append(ol); app.append(nx);
+  }
+  const lg=el('div','legend');
+  lg.append(el('span','chip','들은 것'),el('span',null,'인터뷰에서 들음'),el('span','chip gray','내 생각'),el('span',null,'아직 확인 안 함 (점선)'));
+  app.append(lg);
+})();
+</script>
+</body>
+</html>

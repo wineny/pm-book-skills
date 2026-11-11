@@ -11,7 +11,7 @@ description: "Knowledge base from \"컨티뉴어스 디스커버리 해빗 (Cont
 
 ## How to Use This Skill
 
-- **OST 만들기·점검** — 「기회 나무(OST) 같이 만들어 줘」「이 나무 점검해 줘」면 **먼저 [ost-workflow.md](ost-workflow.md) 를 읽고 그 순서대로** 한다(만들기 7단계, 점검 7항목)
+- **OST 만들기·점검** — 「기회 나무(OST) 같이 만들어 줘」「이 나무 점검해 줘」면 **먼저 [ost-workflow.md](ost-workflow.md) 를 읽고 그 순서대로** 한다(만들기 8단계 — 마지막은 한 장 그림 HTML, 점검 7항목)
 - **Without arguments** — 아래 핵심 프레임워크를 참조용으로 로드
 - **With a topic** — `성과`, `기회`, `가정 테스트`, `인터뷰` 등 토픽을 물으면 해당 장 파일을 찾아 읽음
 - **With chapter** — `ch06`처럼 특정 장을 요청하면 그 장 로드
@@ -120,7 +120,8 @@ Core Frameworks에 없는 토픽을 물으면, 답하기 전에 관련 장 파�
 - [glossary.md](glossary.md) — 전체 용어 사전 (장 표기 포함)
 - [patterns.md](patterns.md) — 기법 16종 (When/How/Trade-offs)
 - [cheatsheet.md](cheatsheet.md) — 상황별 판단 규칙·숫자·냄새(tells)
-- [ost-workflow.md](ost-workflow.md) — OST 만들기 7단계·점검 7항목 (쉬운 말 버전)
+- [ost-workflow.md](ost-workflow.md) — OST 만들기 8단계·점검 7항목 (쉬운 말 버전)
+- [ost-tree-template.html](ost-tree-template.html) — 기회 나무 한 장 그림 틀 (만들기 8단계에서 데이터만 채움)
 
 ---
 
