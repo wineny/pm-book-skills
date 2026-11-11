@@ -1,6 +1,6 @@
 ---
 name: continuous-discovery
-description: "Knowledge base from \"컨티뉴어스 디스커버리 해빗 (Continuous Discovery Habits)\" by Teresa Torres (한국어 번역판). 기회 솔루션 트리(OST) 만들기·검토, 성과(비즈니스/제품/트랙션) 고르기, 경험 지도, 지속적 인터뷰, 기회 우선순위, 아이디에이션, 가정 매핑·가정 테스트 설계, 이해관계자 공유가 필요할 때, 그리고 「우리 논리가 책에서도 그런가」를 원문 기준으로 대조할 때 사용. 책을 공부하거나 개념을 참조할 때도 사용."
+description: "Knowledge base from \"컨티뉴어스 디스커버리 해빗 (Continuous Discovery Habits)\" by Teresa Torres (한국어 번역판). 기회 솔루션 트리(OST) 만들기·점검(「이 나무 점검해 줘」), 성과(비즈니스/제품/트랙션) 고르기, 경험 지도, 지속적 인터뷰, 기회 우선순위, 아이디에이션, 가정 매핑·가정 테스트 설계, 이해관계자 공유가 필요할 때, 그리고 「우리 논리가 책에서도 그런가」를 원문 기준으로 대조할 때 사용. 책을 공부하거나 개념을 참조할 때도 사용."
 ---
 
 <!-- argument-hint: [topic, framework name, chapter number, or a claim to check against the book] -->
@@ -11,6 +11,7 @@ description: "Knowledge base from \"컨티뉴어스 디스커버리 해빗 (Cont
 
 ## How to Use This Skill
 
+- **OST 만들기·점검** — 「기회 나무(OST) 같이 만들어 줘」「이 나무 점검해 줘」면 **먼저 [ost-workflow.md](ost-workflow.md) 를 읽고 그 순서대로** 한다(만들기 7단계, 점검 7항목)
 - **Without arguments** — 아래 핵심 프레임워크를 참조용으로 로드
 - **With a topic** — `성과`, `기회`, `가정 테스트`, `인터뷰` 등 토픽을 물으면 해당 장 파일을 찾아 읽음
 - **With chapter** — `ch06`처럼 특정 장을 요청하면 그 장 로드
@@ -119,6 +120,7 @@ Core Frameworks에 없는 토픽을 물으면, 답하기 전에 관련 장 파�
 - [glossary.md](glossary.md) — 전체 용어 사전 (장 표기 포함)
 - [patterns.md](patterns.md) — 기법 16종 (When/How/Trade-offs)
 - [cheatsheet.md](cheatsheet.md) — 상황별 판단 규칙·숫자·냄새(tells)
+- [ost-workflow.md](ost-workflow.md) — OST 만들기 7단계·점검 7항목 (쉬운 말 버전)
 
 ---
 
