@@ -18,6 +18,7 @@ $pmbsOk = & {
   $Skills = @('mom-test', 'continuous-discovery')
   $ZipUrl = 'https://github.com/wineny/pm-book-skills/archive/refs/heads/main.zip'
   $tmp = $null
+  $staged = $null
   try {
     # 1. Find the skills source: next to this script (offline) or download the zip.
     if ($pmbsScriptRoot -and (Test-Path (Join-Path $pmbsScriptRoot 'skills\mom-test\SKILL.md'))) {
@@ -66,6 +67,7 @@ $pmbsOk = & {
           if ($item.LinkType) { [IO.Directory]::Delete($target) } else { Remove-Item $target -Recurse -Force }
         }
         Rename-Item $staged $s
+        $staged = $null
         $md = Join-Path $target 'SKILL.md'
         if (Test-Path $md) { Write-Host "OK  $md" -ForegroundColor Green } else { $missing += $md }
       }
@@ -81,6 +83,7 @@ $pmbsOk = & {
     Write-Host "Then ask: mom-test skill, check my interview questions."
     return $true
   } catch {
+    if ($staged) { Remove-Item $staged -Recurse -Force -ErrorAction SilentlyContinue }
     Write-Host "Install failed: $($_.Exception.Message)" -ForegroundColor Red
     return $false
   } finally {

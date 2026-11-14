@@ -23,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/wineny/pm-book-skills/main/install.
 irm https://raw.githubusercontent.com/wineny/pm-book-skills/main/install.ps1 | iex
 ```
 
-**인터넷이 안 될 때(Windows)** — [zip 파일](https://github.com/wineny/pm-book-skills/archive/refs/heads/main.zip)(`pm-book-skills-main.zip`)을 받아 압축을 푸세요. 풀면 `pm-book-skills-main` 폴더 안에 같은 이름 폴더가 하나 더 있어요. **`install.ps1` 이 보이는 안쪽 폴더**를 열고, 빈 곳을 오른쪽 클릭해 「터미널에서 열기」(Windows 10 은 Shift + 오른쪽 클릭 → 「여기에 PowerShell 창 열기」)를 누른 뒤 이렇게 치세요.
+**인터넷이 안 될 때(Windows)** — [zip 파일](https://github.com/wineny/pm-book-skills/archive/refs/heads/main.zip)(`pm-book-skills-main.zip`)을 받아 압축을 푸세요. 풀면 `pm-book-skills-main` 폴더 안에 같은 이름 폴더가 하나 더 있을 수 있어요. **`install.ps1` 이 보이는 안쪽 폴더**를 열고, 빈 곳을 오른쪽 클릭해 「터미널에서 열기」(Windows 10 은 Shift + 오른쪽 클릭 → 「여기에 PowerShell 창 열기」)를 누른 뒤 이렇게 치세요.
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\install.ps1
