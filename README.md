@@ -9,11 +9,27 @@ PM 책 두 권을 정리한 AI 스킬 2개입니다. Codex·Claude Code 에서 �
 
 ## 설치 (한 줄)
 
-터미널에 붙여 넣으세요.
+**Codex 안에서 설치를 시키지 마세요.** Codex 는 명령을 돌릴 때 인터넷을 막아서 내려받기가 실패해요. 아래 명령은 일반 터미널 창에 붙여 넣으세요.
+
+**Mac** — 「터미널」 앱에 붙여 넣으세요.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/wineny/pm-book-skills/main/install.sh | bash
 ```
+
+**Windows** — 시작 메뉴에서 「PowerShell」을 열고 붙여 넣으세요. 관리자 권한은 필요 없어요.
+
+```powershell
+irm https://raw.githubusercontent.com/wineny/pm-book-skills/main/install.ps1 | iex
+```
+
+**인터넷이 안 될 때(Windows)** — [zip 파일](https://github.com/wineny/pm-book-skills/archive/refs/heads/main.zip)(`pm-book-skills-main.zip`)을 받아 압축을 푸세요. 풀면 `pm-book-skills-main` 폴더 안에 같은 이름 폴더가 하나 더 있을 수 있어요. **`install.ps1` 이 보이는 안쪽 폴더**를 열고, 빈 곳을 오른쪽 클릭해 「터미널에서 열기」(Windows 10 은 Shift + 오른쪽 클릭 → 「여기에 PowerShell 창 열기」)를 누른 뒤 이렇게 치세요.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+설치가 끝나면 **Codex 를 완전히 껐다가 다시 켜세요.** 스킬은 켤 때만 읽어요. 다시 켠 뒤 「mom-test 스킬 있어?」라고 물어서 확인하세요.
 
 - Codex 스킬 폴더(`~/.codex/skills`)에 설치합니다.
 - Claude Code 를 쓰고 있으면(`~/.claude` 가 있으면) `~/.claude/skills` 에도 설치합니다.
